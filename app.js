@@ -76,7 +76,7 @@ app.post("/add", (req, res)=>{
 
 
 app.get("/delete", (req, res)=>{
-	data = fs.readFileSync("./todolist.json");
+	data = fs.readFileSync("./todolist.json", 'utf8');
 	data = JSON.parse(data);
 	
 	let reference = [];
