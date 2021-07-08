@@ -1,0 +1,65 @@
+*, body{
+	margin:0;
+	padding; 0;
+}
+
+@font-face {
+  font-family: "rightland";
+  src: url("./Rightland.otf") format("opentype");
+}
+
+header nav .app-brand{
+	font-size: 3em;
+	font-family: "rightland";
+	margin-top: 0.25em;
+	margin-left: 1em;
+}
+
+.add-div{
+	margin-top: 3em;
+}
+
+.add{
+	float: right;
+}
+
+.container1{
+	padding: 0.5em;
+}
+.container1 div {
+	padding-top: 0.5em;
+}
+
+.container1 div input{
+	width: 94%;
+}
+
+.date-input{
+	display: block; 
+	margin-bottom: 0.25em;
+}
+
+.items{
+	margin: 4em 3em 0em 3em;
+}
+
+.items div {
+	margin-top: 2em;
+	margin-left: 1em;
+	width: 90%;
+}
+
+
+.checked{
+	width: 100%;
+	height: 100%;
+}
+
+.task-checked{
+	background-color: #5cb85c;
+	color: white;
+}
+.task-checked span{
+	margin-left: 1em;
+}
+

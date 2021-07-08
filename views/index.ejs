@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>To do list | App</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="./styles.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand app-brand" href="/">To Do list</a>
+			</nav>
+		</header>
+		<main class="container">
+			<div class="row add-div">
+				<div class="col">
+					<div class="add">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+						Add
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<form action="/add" method="POST">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Add tasks</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="container1">
+											<input type="date" class="date-input" name="date" value= <%= currentDate %>  min="<%= currentDate %>" max="12-12-2021" required/>
+											<button type="button" class="add_form_field">New Task &nbsp; </button>
+										</div>
+									</div>
+									<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					</div>
+				</div>
+			</div>
+			
+			<% Object.keys(data).forEach(taskDate=>{ %>
+				<div class="row" id="row_<%= taskDate %>">
+					<div class="col">
+						<div class="items">
+							<button class="btn btn-primary" id="taskdate" type="button" data-toggle="collapse" data-target="#taskslist_<%= taskDate %>"" aria-expanded="false" aria-controls="taskslist_<%= taskDate %>""><%= taskDate %></button>
+					
+							<div class="collapse" id="taskslist_<%= taskDate %>">
+								<ul class="list-group task-list-group">
+									<% data[taskDate].forEach(elem=>{ %>
+										<% if(elem.done == true){%>
+											<li class="list-group-item task-checked" name="<%=elem.task%>"> <%= elem.task %> <span>&#10004;</span>								
+										<% } else{ %>
+											<li class="list-group-item" name="<%=elem.task%>"> <%= elem.task %>								
+										<% } %>
+											<a type="button" class="close delete" data-dismiss="list-group-item" aria-label="Delete" href="/delete?date=<%= taskDate %>&target=<%= elem.task %>">
+												<span aria-hidden="true">&times;</span>
+											</a></li>
+									<% }) %>
+								
+								</ul>
+							</div>
+					</div>
+					</div>
+				</div>
+			<% })%>
+			
+			<!-- !! Pour ajouter des éléments: respect le format suivant !!-->
+			<!-- <div class="row">
+					<div class="col">
+						Ici ton HTML
+					</div>
+				</div>
+			-->
+			<!-- Tu peux mettre plusieurs parties comme ci-dessus -->
+			
+		</main>
+		
+		
+		<script src="./main.js"></script>
+	</body>
+</html>
